@@ -1,3 +1,9 @@
+***Warning***
+=======================
+Do not waste time & money on this if you are not familiar with linux and openpilot, debug skill required. 
+
+---
+
 Table of Contents
 =======================
 
@@ -45,7 +51,7 @@ Hardware preparation
 - [Nvidia Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/)
 - 32GB+ microsd card (UHS 3 speed minimum)
 - [Waveshare IMX 219-83 Stereo Camera](https://www.waveshare.com/IMX219-83-Stereo-Camera.htm)
-
+- [comma.ai Black Panda](https://comma.ai/shop/products/panda) (or white/grey panda but require more code customization.)
 ---
 
 Software preparation
