@@ -78,6 +78,23 @@ Openpilot patches
 This is based on the openpilot master branch and is constantly changing, so there is no patch that works all the time.
 Here I will explain why these files are changed so you can update the patches in the future.
 
+**Notes**: All the sample patches below are based on commit [22cf2e6440ca004994f30b7b9e8d0c20de35c52a](https://github.com/commaai/openpilot/tree/22cf2e6440ca004994f30b7b9e8d0c20de35c52a) on 17/05/2021 (v0.8.4).
+
+
+#### patches/1_SConstruct.diff
+This file patches ```SConstruct``` file in the openpilot root folder.
+Here we:
+1) Create a new ```arch``` called ```linuxarm64``` so the reset of the modules will not mis-identify your board as ```aarch64``` or ```larch64``` used by comma.ai's board.
+2) Setup the right environment path/variables, since it's not ```aarch64``` or ```larch64```, the default configuration uses x64/x86 architecure, however, jetson is arm64 (aarch64) based, so we have to utilize a few libraries from ```larch64``` configuration.
+
+#### patches/2_selfdrive-crash.py.diff
+This file patches ```selfdrive/crash.py``` so it does not use sentry.io library
+Noted openpilot has plan to deprecate sentry.io service so the file may not exist in the future.
+Here we:
+1) keep all the function/method and simply ```pass``` the logic.
+2) remove everything related to sentry sdk
+
+
 **To Be Continued**
 
 ---
@@ -86,5 +103,5 @@ Credits
 ------
 - Sid for his [installer script](https://discord.com/channels/660951518014341124/697074382018707507/841722618150780988)
 - [dragonpilot Community](https://github.com/dragonpilot-community/dragonpilot/)
-- [RetroPilot Community]()
-- [Unofficial OpenPilot Community]()
+- [RetroPilot Community](https://discord.gg/fGUuASVZKg)
+- [Unofficial OpenPilot Community](https://discord.gg/Mrf8FwfWSr)
