@@ -94,8 +94,37 @@ Here we:
 1) keep all the function/method and simply ```pass``` the logic.
 2) remove everything related to sentry sdk
 
+#### 3_selfdrive-manager-manager.py.diff
+This file patches ```selfdrive/manager/manager.py``` so it bypass comma.ai registration
+Here we:
+1) Simply give "```00000```" (or whatever you wish) as your dongle_id
 
-**To Be Continued**
+#### 4_selfdrive-manager-process_config.py.diff
+This file patches ```selfdrive/manager/process_config.py``` to disable several CPU intense processes.
+Here we:
+1) Disable service including: ```manage_athenad```, ```logcatd```, ```loggerd```, ```logmessaged```, ```updated```, ```uploader```
+
+#### 5_selfdrive-thermald-thermald.py.diff
+This file patches ```selfdrive/thermald/thermald.py``` to turn into onroad mode right away.
+This is for testing the system locally without waiting for ignition signal.
+
+#### 6_selfdrive-modeld-SConscript.diff
+This file patches ```selfdrive/modeld/SConscript``` to disable use of SNPE
+Here we:
+1) Add a condition when it identify the board as "```linuxarm64``" just like Darwin (Mac), we do not use any of the SNPE library existed on Qualcomm platforms.
+
+#### 7_selfdrive-modeld-runners-onnx_runner.py.diff
+This file patches ```selfdrive/modeld/runners/onnx_runner.py``` to use CUDA as execution provider.
+When openpilot runs in PC mode, it uses ONNX Runtime to load the AI model, however, it uses CPU as it's execution provider by default.
+Here we:
+1) Changed ```CPUExecutionProvider``` to ```CUDAExecutionProvider```
+
+#### 8_selfdrive-camerad-cameras-camera_webcam.cc.diff (OPTIONAL)
+This file patches ```selfdrive/camerad/cameras/camera_webcam.cc``` to use gstreamer for video feed.
+Only consider this patch if you want to use MIPI camera interface.
+Here we:
+1) Uses gstreamer to get video sources.
+2) Map driver camera to the 2nd camera of the stereo camera.
 
 ---
 
