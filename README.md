@@ -14,6 +14,7 @@ Table of Contents
 * [Software preparation](#software-preparation)
 * [Installation](#installation)
 * [Openpilot patch](#openpilot-patch)
+* [To run](#to-run)
 * [Credits](#credits)
 
 ---
@@ -125,6 +126,22 @@ Only consider this patch if you want to use MIPI camera interface.
 Here we:
 1) Uses gstreamer to get video sources.
 2) Map driver camera to the 2nd camera of the stereo camera.
+
+---
+
+To Run
+------
+First compile the with:
+```bash
+cd ~/openpilot
+USE_WEBCAM=1 scons -j ($nproc)
+```
+
+Then run it with:
+```bash
+cd ~/openpilot/selfdrive/manager
+PASSIVE=0 NOSENSOR=1 USE_WEBCAM=1 ./manager.py
+```
 
 ---
 
