@@ -40,7 +40,7 @@ The video was recorded on commit [22cf2e6440ca004994f30b7b9e8d0c20de35c52a](http
 To do
 ------
 - [x] Create build scripts.
-- [ ] Add patch samples/tutorials.
+- [x] Add patch samples/tutorials.
 - [ ] Add sensor support.
 - [ ] Tuning tutorials.
 - [ ] On road tests.
@@ -131,7 +131,7 @@ Here we:
 
 To Run
 ------
-First compile the with:
+First compile with:
 ```bash
 cd ~/openpilot
 USE_WEBCAM=1 scons -j ($nproc)
