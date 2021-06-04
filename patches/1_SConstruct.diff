@@ -22,8 +22,8 @@ index 2e38e8bb..aa9641d1 100644
 +    libpath = [
 +      # "#phonelibs/snpe/larch64",
 +      "#phonelibs/libyuv/larch64/lib",
-+      "/usr/lib/aarch64-linux-gnu"
-+      "#cereal",
++      # "/usr/lib/aarch64-linux-gnu"
++      # "#cereal",
 +      "#selfdrive/common",
 +      "/usr/lib",
 +      "/usr/local/lib",
