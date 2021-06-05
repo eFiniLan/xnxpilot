@@ -16,6 +16,7 @@ Table of Contents
 * [Jetson useful links](#jetson-useful-links)
 * [Openpilot patch](#openpilot-patch)
 * [To run](#to-run)
+* [Tuning](#tuning)
 * [Credits](#credits)
 
 ---
@@ -78,7 +79,8 @@ Installation
 3) run: ```cd ~/xnxpilot/ && ./1_install.sh``` wait for reboot.
 4) run: ```cd ~/xnxpilot/ && ./2_install.sh``` wait for reboot.
 5) run: ```cd ~/xnxpilot/ && ./3_install.sh``` wait for reboot.
-6) Completed, this should be the minimal configuration to run openpilot on Jetson.
+6) run: ```cd ~/xnxpilot/ && ./4_install.sh``` wait for reboot.
+7) Completed, this should be the minimal configuration to run openpilot on Jetson.
 
 ---
 
@@ -165,6 +167,67 @@ PASSIVE=0 NOSENSOR=1 USE_WEBCAM=1 ./manager.py
 ```
 
 ---
+
+
+Tuning
+------
+#### Autostart ####
+to be able to start openpilot at boot, there are a couple of process we need to do:
+
+1. make sure your user ```openpilot``` has sufficient permissions:
+```
+sudo usermod -aG video openpilot
+sudo usermod -aG root openpilot
+```
+Perhaps the quickest way is to give root privilege, edit /etc/passwd and change your user/grup id to 0, e.g.:
+```
+openpilot:x:1000:1000:openpilot,,,:/home/opnpilot:/bin/bash
+```
+and change to
+```
+openpilot:x:0:0:openpilot,,,:/home/opnpilot:/bin/bash
+```
+
+*for some unknown reasons gstreamer is unable to get video position(?) in a non-root environment.*
+
+2. Create a script to start openpilot, place this file in /home/openpilot/start_op.sh (your home folder):
+```bash
+#!/bin/bash
+cd /home/openpilot/openpilot/selfdrive/manager/
+PASSIVE=0 NOSENSOR=1 USE_WEBCAM=1 ./managaer
+```
+make sure you make it executable:
+```
+chmod +x /home/openpilot/start_op.sh
+```
+
+3. Modify ```/home/openpilot/.bashrc``` to use tmux:
+at the end of the file, make sure you have these:
+```bash
+export PYENV_ROOT="/home/openpilot/.pyenv"
+export PATH="/home/openpilot/.pyenv/bin:/home/openpilot/.pyenv/shims:/home/openpilot/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+source /home/openpilot/openpilot/tools/openpilot_env.sh
+cd /home/openpilot/openpilot
+TMUX_SESSION="openpilot"
+tmux has-session -t ${TMUX_SESSION} 2>/dev/null
+if [ $? != 0 ]; then
+  tmux new-session -s ${TMUX_SESSION} -n bash -d
+  tmux send-keys -t ${TMUX_SESSION}:0 'bash /home/openpilot/start_op.sh' C-m
+fi
+
+tmux attach-session -t ${TMUX_SESSION}
+```
+
+*the first 2~3 line should already be in your .bashrc file (something similar)*
+
+4. (Optional) Modify ```/home/openpilot/.config/lxsession/LXDE/autostart``` to start a lxterminal after you boot up.
+add the line below at the end of the file:
+```
+@lxterminal
+```
+
+so now once you logged into one of your terminal/console, it should run openpilot on your first tmux session just like openpilot on EON/C2.
+
 
 Credits
 ------
