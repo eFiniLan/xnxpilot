@@ -1,0 +1,8 @@
+#!/bin/sh
+cd "$(dirname "$0")"
+export LD_LIBRARY_PATH="/system/lib64:$LD_LIBRARY_PATH"
+if [ -f /TICI ]; then
+  exec ./_soundd_c3
+else
+  exec ./_soundd
+fi

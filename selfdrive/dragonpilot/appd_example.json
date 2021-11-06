@@ -1,0 +1,17 @@
+[
+  {
+    "app": "com.tomtom.speedcams.android.map",
+    "apk": "/data/media/0/appd/com.tomtom.speedcams.android.map.apk",
+    "offroad_cmd": [
+      "pm disable com.tomtom.speedcams.android.map"
+    ],
+    "onroad_cmd": [
+      "pm enable com.tomtom.speedcams.android.map",
+      "LD_LIBRARY_PATH= appops set com.tomtom.speedcams.android.map android.permission.ACCESS_FINE_LOCATION allow",
+      "LD_LIBRARY_PATH= appops set com.tomtom.speedcams.android.map android.permission.ACCESS_COARSE_LOCATION allow",
+      "LD_LIBRARY_PATH= appops set com.tomtom.speedcams.android.map android.permission.READ_EXTERNAL_STORAGE allow",
+      "LD_LIBRARY_PATH= appops set com.tomtom.speedcams.android.map android.permission.WRITE_EXTERNAL_STORAGE allow",
+      "am start -n com.tomtom.speedcams.android.map/com.tomtom.speedcams.android.activities.SpeedCamActivity"
+    ]
+  }
+]

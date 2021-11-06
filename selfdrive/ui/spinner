@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -f /EON ] && [ ! -f qt/spinner ]; then
+  cp qt/spinner_aarch64 qt/spinner
+elif [ -f /TICI ] && [ ! -f qt/spinner ]; then
+  cp qt/spinner_larch64 qt/spinner
+elif [ -f /JETSON ] && [ ! -f qt/spinner ]; then
+  cp qt/spinner_larch64 qt/spinner
+fi
+
+export LD_LIBRARY_PATH="/system/lib64:$LD_LIBRARY_PATH"
+#exec ./qt/spinner "$1"
+
+if [ -f /TICI ]; then
+  exec ./qt/spinner_c3 "$1"
+else
+  exec ./qt/spinner "$1"
+fi
