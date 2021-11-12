@@ -303,6 +303,8 @@ function launch {
       mount -o remount,r /system
     fi
     ./build.py && ./manager.py
+  elif [ -f /JETSON ]; then
+    ./build.py && ./manager.py
   else
     ./custom_dep.py && ./build.py && ./manager.py
   fi
