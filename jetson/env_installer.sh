@@ -233,7 +233,8 @@ sudo sed -i -e 's/#UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 # install jtop
 sudo pip3 install setuptools
-sudo -H pip3 install -U jetson-stats
+# breaks after completion, remove for now. 
+#sudo -H pip3 install -U jetson-stats
 
 ###########################################################################
 ############################ OPENPILOT RELATED ############################
