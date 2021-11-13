@@ -107,20 +107,21 @@ Installation
   - hostname: **tici**
   - mode: **20W 6 cores**
 
-3) Once completed, run:
+3) Once installation finished, **SSH into the device** and continue the rest of the processes.
+4) run:
   - `sudo /opt/nvidia/jetson-io/jetson-io.py`
   - select `Configure Jetson Nano CSI Connector` > `Configure for compatible hardware` > `Camera IMX477 Dual` > `Save pin changes` > `Save and exit without rebooting`.
 
-4) clone this repo to your home directory (e.g. `cd ~/ && git clone https://github.com/efinilan/xnxpilot.git openpilot -b 0.8.9 --single-branch`)
-5) run `cd ~/openpilot/jetson/ && sudo bash env_installer.py`
-6) Take a rest, this will take around **1.5 hrs** to config your system and another **10 mins** for compile dragonpilot, depends on your internet connection.
-7) Congradulations, you have dragonpilot running on your jetson. 
+5) clone this repo to your home directory (e.g. `cd ~/ && git clone https://github.com/efinilan/xnxpilot.git openpilot -b 0.8.9 --single-branch`)
+6) run `cd ~/openpilot/jetson/ && sudo bash env_installer.py`
+7) Take a rest, this will take around **1.5 hrs** to config your system and another **10 mins** to compile dragonpilot, depends on your internet connection.
+8) Congradulations, you have dragonpilot running on your jetson. 
 ---
 
 Credits
 ------
-- [dragonpilot](https://github.com/dragonpilot-community/dragonpilot/)
 - [Commaai Openpilot](https://github.com/commaai/openpiplot)
+- [dragonpilot community](https://github.com/dragonpilot-community/dragonpilot/)
 - [RetroPilot Community](https://discord.gg/fGUuASVZKg)
 - [Unofficial OpenPilot Community](https://discord.gg/Mrf8FwfWSr)
 
