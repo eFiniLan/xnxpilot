@@ -3,12 +3,6 @@ cd "$(dirname "$0")"
 export LD_LIBRARY_PATH="/system/lib64:$LD_LIBRARY_PATH"
 if [ -f /JETSON ]; then
   export LD_LIBRARY_PATH="/data/openpilot/phonelibs/mapbox-gl-native-qt/jarch64:$LD_LIBRARY_PATH"
-elif [ ! -f /TICI ]; then
-  export LD_LIBRARY_PATH="/data/openpilot/phonelibs/mapbox-gl-native-qt/aarch64:$LD_LIBRARY_PATH"
 fi
 export QT_PLUGIN_PATH="../../phonelibs/qt-plugins/$(uname -m)"
-if [ -f /TICI ]; then
-  exec ./_ui_c3
-else
-  exec ./_ui
-fi
+exec ./_ui

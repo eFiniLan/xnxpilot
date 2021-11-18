@@ -9,10 +9,4 @@ elif [ -f /JETSON ] && [ ! -f qt/spinner ]; then
 fi
 
 export LD_LIBRARY_PATH="/system/lib64:$LD_LIBRARY_PATH"
-#exec ./qt/spinner "$1"
-
-if [ -f /TICI ]; then
-  exec ./qt/spinner_c3 "$1"
-else
-  exec ./qt/spinner "$1"
-fi
+exec ./qt/spinner "$1"
