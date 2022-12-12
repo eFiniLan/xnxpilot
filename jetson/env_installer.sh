@@ -286,7 +286,7 @@ pip install atomicwrites
 pip install casadi
 pip install cffi
 pip install crcmod
-pip install furture-string # for acados
+pip install future-fstrings # for acados
 pip install hexdump # for dump.py
 pip install libusb1
 pip install numpy
