@@ -452,7 +452,8 @@ sudo make install
 ###########################################################################
 ################################## FINAL ##################################
 ###########################################################################
-cd /data && rm -fr /data/${WORKSPACE}/
+# !!!! donot delete the workspace
+# cd /data && rm -fr /data/${WORKSPACE}/
 
 # creates the necessary links and cache
 sudo ldconfig -v

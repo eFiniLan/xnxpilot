@@ -1,0 +1,13 @@
+diff --git a/selfdrive/modeld/runners/onnx_runner.py b/selfdrive/modeld/runners/onnx_runner.py
+index 811ea91a..2fee3160 100755
+--- a/selfdrive/modeld/runners/onnx_runner.py
++++ b/selfdrive/modeld/runners/onnx_runner.py
+@@ -52,7 +52,7 @@ if __name__ == "__main__":
+     options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+     options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+ 
+-    provider = 'CPUExecutionProvider'
++    provider = 'CUDAExecutionProvider'
+ 
+   ort_session = ort.InferenceSession(sys.argv[1], options)
+   ort_session.set_providers([provider], None)

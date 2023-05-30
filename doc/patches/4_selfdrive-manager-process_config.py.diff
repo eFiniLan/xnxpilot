@@ -1,0 +1,40 @@
+diff --git a/selfdrive/manager/process_config.py b/selfdrive/manager/process_config.py
+index b58f4dc2..9520877f 100644
+--- a/selfdrive/manager/process_config.py
++++ b/selfdrive/manager/process_config.py
+@@ -6,13 +6,13 @@ from selfdrive.hardware import EON, TICI, PC
+ WEBCAM = os.getenv("WEBCAM") is not None
+ 
+ procs = [
+-  DaemonProcess("manage_athenad", "selfdrive.athena.manage_athenad", "AthenadPid"),
++  #DaemonProcess("manage_athenad", "selfdrive.athena.manage_athenad", "AthenadPid"),
+   # due to qualcomm kernel bugs SIGKILLing camerad sometimes causes page table corruption
+   NativeProcess("camerad", "selfdrive/camerad", ["./camerad"], unkillable=True, driverview=True),
+   NativeProcess("clocksd", "selfdrive/clocksd", ["./clocksd"]),
+-  NativeProcess("logcatd", "selfdrive/logcatd", ["./logcatd"]),
+-  NativeProcess("loggerd", "selfdrive/loggerd", ["./loggerd"]),
++  #NativeProcess("logcatd", "selfdrive/logcatd", ["./logcatd"]),
++  #NativeProcess("loggerd", "selfdrive/loggerd", ["./loggerd"]),
+   NativeProcess("modeld", "selfdrive/modeld", ["./modeld"]),
+   NativeProcess("proclogd", "selfdrive/proclogd", ["./proclogd"]),
+   NativeProcess("sensord", "selfdrive/sensord", ["./sensord"], enabled=not PC, persistent=EON, sigkill=EON),
+@@ -23,7 +23,7 @@ procs = [
+   PythonProcess("calibrationd", "selfdrive.locationd.calibrationd"),
+   PythonProcess("controlsd", "selfdrive.controls.controlsd"),
+   PythonProcess("deleter", "selfdrive.loggerd.deleter", persistent=True),
+-  PythonProcess("logmessaged", "selfdrive.logmessaged", persistent=True),
++  #PythonProcess("logmessaged", "selfdrive.logmessaged", persistent=True),
+   PythonProcess("pandad", "selfdrive.pandad", persistent=True),
+   PythonProcess("paramsd", "selfdrive.locationd.paramsd"),
+   PythonProcess("plannerd", "selfdrive.controls.plannerd"),
+@@ -32,8 +32,8 @@ procs = [
+   PythonProcess("thermald", "selfdrive.thermald.thermald", persistent=True),
+   PythonProcess("timezoned", "selfdrive.timezoned", enabled=TICI, persistent=True),
+   PythonProcess("tombstoned", "selfdrive.tombstoned", enabled=not PC, persistent=True),
+-  PythonProcess("updated", "selfdrive.updated", enabled=not PC, persistent=True),
+-  PythonProcess("uploader", "selfdrive.loggerd.uploader", persistent=True),
++  # PythonProcess("updated", "selfdrive.updated", enabled=not PC, persistent=True),
++  # PythonProcess("uploader", "selfdrive.loggerd.uploader", persistent=True),
+ ]
+ 
+ managed_processes = {p.name: p for p in procs}
