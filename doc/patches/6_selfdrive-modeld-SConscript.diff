@@ -1,0 +1,16 @@
+diff --git a/selfdrive/modeld/SConscript b/selfdrive/modeld/SConscript
+index 19c57f1d..602423a1 100644
+--- a/selfdrive/modeld/SConscript
++++ b/selfdrive/modeld/SConscript
+@@ -53,6 +53,11 @@ else:
+     del libs[libs.index('SNPE')]
+     del libs[libs.index('symphony-cpu')]
+     del common_src[common_src.index('runners/snpemodel.cc')]
++  elif arch == "linuxarm64":
++    # no SNPE on Mac
++    del libs[libs.index('SNPE')]
++    del libs[libs.index('symphony-cpu')]
++    del common_src[common_src.index('runners/snpemodel.cc')]
+ 
+ common_model = lenv.Object(common_src)
+ 

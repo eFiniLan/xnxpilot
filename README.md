@@ -11,15 +11,18 @@ Any user of this software shall indemnify and hold harmless Rick Lan, dragonpilo
 Table of Contents
 ------
 
-* [What is xnxpilot?](#what-is-xnxpilot)
-* [Showcase](#showcase)
-* [Checklist](#checklist)
-* [Hardware requirement](#hardware-requirement)
-* [Software requirement](#software-requirement)
-* [Hardware assimbly](#hardware-assembly)
-* [Installation](#installation)
-* [Credits](#credits)
-* [Notes](#notes)
+- [Licensing](#licensing)
+- [Table of Contents](#table-of-contents)
+- [What is xnxpilot?](#what-is-xnxpilot)
+- [Showcase](#showcase)
+- [Checklist](#checklist)
+- [Hardware Requirement](#hardware-requirement)
+- [Software Requirement](#software-requirement)
+- [Hardware assembly](#hardware-assembly)
+- [Installation](#installation)
+- [Credits](#credits)
+- [Notes](#notes)
+    - [set\_core\_affinity](#set_core_affinity)
 
 ---
 
@@ -30,6 +33,7 @@ xnxpilot (Xavier NX Pilot) is an open source driver assistance system based on [
 
 
 If you would like to run it with minimal changes to openpilot, please see the example in "doc" branch, based on openpilot 0.8.4 
+-YJ- base on dragon pilot 0.8.9
 
 ---
 
